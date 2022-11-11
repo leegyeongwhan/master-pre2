@@ -4,8 +4,7 @@ package com._2.writter;
 import com._2.reader.FileReader;
 import com._2.record.Record;
 import com._2.record.RecordService;
-import com._2.sebject.Subject;
-import com._2.student.Score;
+import com._2.sebject.Score;
 import com._2.student.Student;
 
 import java.util.ArrayList;
@@ -16,26 +15,22 @@ public class FileWriter implements Writer {
 
     @Override
     public void writer() {
-        start();
-    }
-
-    public void start() {
         List<String> fileList = getList();
-        inputRecord(fileList);
-    }
-
-    private void inputRecord(List<String> fileList) {
-        int recordSize = getRecordSize(fileList);
         RecordService recordService = getRecordService();
         getRecordStartRawCal(fileList);
         fileList.remove(0);
+        int recordSize = getListSize(fileList);
+        getPrintRecord(fileList, recordSize, recordService);
+    }
 
+    private void getPrintRecord(List<String> fileList, int recordSize, RecordService recordService) {
         for (int i = 0; i < recordSize; i++) {
-            //input suduent ,score
             String[] splits = fileList.get(i).split(" ");
             String[] list1 = {splits[0], splits[1], splits[2]};
             String[] list2 = removeSplits(splits, 2);
-            Student student = new Student(list1,new Score(list2));
+            Student student = new Student(list1, new com._2.student.Score(list2));
+            Record record = new Record(student);
+            recordService.printRecord(record);
         }
     }
 
@@ -43,8 +38,9 @@ public class FileWriter implements Writer {
         String[] split = fileList.subList(0, 1).get(0).split(" ");
         String[] list1 = {split[0], split[1], split[2]};
         String[] list2 = removeSplits(split, 2);
-        Student student = new Student(list1, new Score(list2));
-        Subject subject = new Subject(list2);
+        Student student = new Student(list1);
+        Score subject = new Score(list2);
+        getRecordService().printStartRawCal(student, subject);
     }
 
 
@@ -68,7 +64,7 @@ public class FileWriter implements Writer {
         return result.toArray(new String[0]);
     }
 
-    private int getRecordSize(List<String> fileList) {
+    private int getListSize(List<String> fileList) {
         int recordSize = 0;
         for (String s : fileList) {
             recordSize++;
