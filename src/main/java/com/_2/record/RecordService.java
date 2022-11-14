@@ -29,8 +29,7 @@ public class RecordService {
     public void printRecord(Record record) {
         Student studentRecord = record.getStudentRecord();
         String[] scoreList = studentRecord.getScoreList();
-
-
+        
         System.out.println(studentRecord.getName() + message.getSTUDENT_MESSAGE() + scoreList.length + message.getSCORE_MESSAGE1()
                 + message.getSCORE_MESSAGE2() + getScore(scoreList) + message.getSCORE_MESSAGE3() + getScoreAvg(scoreList));
     }
@@ -42,7 +41,6 @@ public class RecordService {
         }
         return sum;
     }
-
 
     private String getScoreAvg(String[] scoreList) {
         double avg = 0;
