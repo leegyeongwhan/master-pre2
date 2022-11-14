@@ -5,18 +5,43 @@ import com.week3.shopping.discount.Discountable;
 
 public class PlatinumCustomer extends Customer implements Discountable {
     private Grade grade;
+    private final int discount = 5;
+    private int mileage;
+    private int parkingPrice = 1000;
 
-    public PlatinumCustomer(Long id, String name, int price, int parkingTime) {
-        super(id, name, price, parkingTime);
+    public PlatinumCustomer(String name, String grade, int price, int parkingTime) {
+        super(name, price, parkingTime);
+
+        this.grade = Grade.valueOf(grade);
+        mileageCount(price);
+        parkingPrice = parkingTime * parkingPrice;
+
     }
 
     @Override
-    void getGrade(Grade grade) {
+    public void getGrade(Grade grade) {
         this.grade = grade;
     }
 
+    //10% 할인률 적용, 10%포인트 적립, 전문 상담원 배정	무료
     @Override
-    public void discount() {
+    public int discount(int price) {
+        return price * discount / 100;
+    }
 
+    @Override
+    public int mileageCount(int price) {
+        return mileage = price * discount / 100;
+    }
+
+    @Override
+    public void printCustomer() {
+        System.out.println(super.name + "님의 지불금액은" + (super.price - discount(super.price)) + "이고 적립포인트는");
+        System.out.println(mileage + "점 입니다 주차요금은" + parkingPrice);
+    }
+
+    @Override
+    public int getParkingTime() {
+        return parkingPrice * parkingTime;
     }
 }

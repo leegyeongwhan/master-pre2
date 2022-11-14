@@ -5,7 +5,4 @@ public class PrintCustomer {
     void printCustomer() {
         System.out.println();
     }
-
-    public void setCustomer() {
-    }
 }
