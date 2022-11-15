@@ -7,6 +7,8 @@ public abstract class Customer {
     protected String name;
     protected int price;
     protected int parkingTime;
+    protected int mileage;
+    protected int parkingPrice;
 
     protected Customer(String name, int price, int parkingTime) {
         this.id++;
@@ -16,10 +18,9 @@ public abstract class Customer {
     }
 
     protected void getGrade(Grade grade) {
-
     }
 
-    protected void printCustomer() {
+    public void printCustomer() {
         System.out.println(name + "님의 지불금액은" + price + "원이고, 적립포인트는.");
     }
 
