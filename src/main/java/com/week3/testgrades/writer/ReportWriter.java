@@ -7,11 +7,12 @@ import com.week3.testgrades.student.StudentInfo;
 import java.io.IOException;
 
 public class ReportWriter implements Writer {
-    private Record record =new Record();
+    private Record record = new Record();
 
     @Override
     public void writer() throws IOException {
         record.getStudentInfo();
+        record.printResultInfo();
     }
 
     //    public void print(Student student, Subject subject) {
