@@ -8,20 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Record {
-    private StudentInfo studentInfo;
-    private List<StudentInfo> list;
+    private List<StudentInfo> studentInfoList;
 
     public void getStudentInfo() throws IOException {
-        studentInfo = new StudentInfo();
-        list = studentInfo.getStudentList();
-        System.out.println("11"+list);
+        StudentInfo studentInfo = new StudentInfo();
+        studentInfoList = studentInfo.getStudentList();
     }
 
     public List<String> findBySubjectRecordList() {
         List<String> subjectList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            Subject subject = list.get(i).getSubject();
-            subjectList.add(String.valueOf(subject));
+        for (int i = 0; i < studentInfoList.size(); i++) {
+            Subject subject = studentInfoList.get(i).getSubject();
+            String str = subject.getSubject();
+            str = str.replaceAll("\\s", "");
+            if (!subjectList.contains(str)) {
+                subjectList.add(str);
+            }
         }
         return subjectList;
     }
@@ -37,14 +39,14 @@ public class Record {
     public void getHeader(String subject) {
         System.out.println(subject + " 과목 결과");
         System.out.println("--------------------------------------");
-        System.out.println(studentInfo.getSubject() + "수강생  학점");
+        System.out.println("    " + subject + " 수강생  학점");
         System.out.println("이름   |   학번  | 중점과목 |  점수");
         System.out.println("--------------------------------------");
     }
 
     public void printStudentList() {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (int i = 0; i < studentInfoList.size(); i++) {
+            System.out.println(studentInfoList.get(i));
         }
     }
 

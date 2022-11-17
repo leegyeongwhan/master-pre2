@@ -12,7 +12,6 @@ public class StudentInfo {
     private Student student;
     private Subject subject;
     private Score score;
-    private StudentInfo studentInfo;
     private List<StudentInfo> list = new ArrayList<>();
 
     private StudentInfo(Student student, Subject subject, Score score) {
@@ -49,8 +48,9 @@ public class StudentInfo {
             //input suduent ,subject
             String[] splits = fileList.get(i).split(" ");
             String[] studentList = {splits[0], splits[1], splits[2]};
-            String subjects = removeSplits(splits, 2)[0];
-            String[] scoreList = removeSplits(splits, 0);
+            String[] removeSplits = removeSplits(splits, 2);
+            String subjects = removeSplits[0];
+            String[] scoreList = removeSplits(removeSplits, 0);
             Student student = new Student(studentList);
             Subject subject = new Subject(subjects);
             Score score = new Score(scoreList);
