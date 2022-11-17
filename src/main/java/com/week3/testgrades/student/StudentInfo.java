@@ -3,22 +3,38 @@ package com.week3.testgrades.student;
 import com.week3.testgrades.reader.ConsolReader;
 import com.week3.testgrades.reader.Reader;
 
-import javax.security.auth.Subject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class StudentInfo {
-    private static Student student;
-    private static Subject subject;
-    private static Score score;
-    private List<String> list = new ArrayList<>();
+    private Student student;
+    private Subject subject;
+    private Score score;
+    private StudentInfo studentInfo;
+    private List<StudentInfo> list = new ArrayList<>();
 
     private StudentInfo(Student student, Subject subject, Score score) {
         this.student = student;
         this.subject = subject;
         this.score = score;
+    }
+
+    public StudentInfo() throws IOException {
+        start();
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public Score getScore() {
+        return score;
     }
 
     public void start() throws IOException {
@@ -28,16 +44,23 @@ public class StudentInfo {
 
     private void inputRecord(List<String> fileList) {
         int recordSize = getRecordSize(fileList);
-
+        //강감찬	211213	국어국문학과	국어	95	56
         for (int i = 0; i < recordSize; i++) {
             //input suduent ,subject
             String[] splits = fileList.get(i).split(" ");
             String[] studentList = {splits[0], splits[1], splits[2]};
-            String[] subjectList = removeSplits(splits, 2);
-            student = new Student(studentList);
-        //    subject = new Subject(subjectList);
-            Score score = null;
+            String subjects = removeSplits(splits, 2)[0];
+            String[] scoreList = removeSplits(splits, 0);
+            Student student = new Student(studentList);
+            Subject subject = new Subject(subjects);
+            Score score = new Score(scoreList);
+            StudentInfo studentInfo = new StudentInfo(student, subject, score);
+            this.list.add(studentInfo);
         }
+    }
+
+    public List<StudentInfo> getStudentList() {
+        return list;
     }
 
     private List<String> getList() throws IOException {
@@ -60,9 +83,5 @@ public class StudentInfo {
             recordSize++;
         }
         return recordSize;
-    }
-
-    public static StudentInfo getStudentInfoInstance() {
-        return new StudentInfo(student, subject, score);
     }
 }

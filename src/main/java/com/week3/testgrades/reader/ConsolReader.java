@@ -13,7 +13,14 @@ public class ConsolReader implements Reader {
     public List<String> reader() {
         Scanner scanner = new Scanner(System.in);
         List<String> list = new ArrayList<>();
-        list.add(scanner.nextLine());
+        String input = "";
+        while (true) {
+            input = scanner.nextLine();
+            if (input.equals("") || input == null) {
+                break;
+            }
+            list.add(input);
+        }
         return list;
     }
 }

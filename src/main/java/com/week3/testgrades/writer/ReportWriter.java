@@ -1,13 +1,17 @@
 package com.week3.testgrades.writer;
 
 import com.week3.testgrades.record.Record;
+import com.week3.testgrades.record.RecordService;
+import com.week3.testgrades.student.StudentInfo;
 
-public class ConsoleWriter implements Writer {
-    private Record record;
+import java.io.IOException;
+
+public class ReportWriter implements Writer {
+    private Record record =new Record();
 
     @Override
-    public void writer() {
-        record.getRecord();
+    public void writer() throws IOException {
+        record.getStudentInfo();
     }
 
     //    public void print(Student student, Subject subject) {

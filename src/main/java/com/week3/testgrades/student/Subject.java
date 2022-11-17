@@ -1,6 +1,5 @@
 package com.week3.testgrades.student;
 
-import java.util.Arrays;
 
 public class Subject {
 
@@ -16,10 +15,8 @@ public class Subject {
         this.math = math;
     }
 
-    public Subject(String[] subjectList) {
-        this(subjectList[0], subjectList[1], subjectList[2]);
-        this.subjects = subjectList;
-        this.subjectCnt = subjectList.length;
+    public Subject(String string) {
+        this.guk = string;
     }
 
     public String[] getSubjects() {
