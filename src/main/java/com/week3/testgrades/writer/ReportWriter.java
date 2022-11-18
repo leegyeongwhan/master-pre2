@@ -1,7 +1,7 @@
 package com.week3.testgrades.writer;
 
-import com.week3.playboard.PlayerLevel;
 import com.week3.testgrades.gradevaluation.BasicEvaluation;
+import com.week3.testgrades.gradevaluation.Evaluatiner;
 import com.week3.testgrades.gradevaluation.GradeEvaluation;
 import com.week3.testgrades.gradevaluation.MajorEvalution;
 import com.week3.testgrades.record.Record;
@@ -59,30 +59,31 @@ public class ReportWriter implements Writer {
 
     private void getScoreAndGrade(int idx, String subject) {
         StudentInfo studentInfo = studentInfoList.get(idx);
-        GradeEvaluation basicEvaluation = new BasicEvaluation();
-        GradeEvaluation majorEvalution = new MajorEvalution();
 
         if (subject.equals(String.valueOf(Data.국어))) {
-            if (studentInfo.getSubject().getSubject().equals(subject)) {
-                String grad = majorEvalution.getGrade(studentInfo.getScore().getKorean());
-                System.out.print(studentInfo.getScore().getKorean() + ":" + grad);
-                System.out.println();
-                return;
-            }
-            String grad = basicEvaluation.getGrade(studentInfo.getScore().getKorean());
-            System.out.print(studentInfo.getScore().getKorean() + ":" + grad);
+            if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getKorean())) return;
         } else if (subject.equals(String.valueOf(Data.수학))) {
-            if (studentInfo.getSubject().getSubject().equals(subject)) {
-                String grad = majorEvalution.getGrade(studentInfo.getScore().getMath());
-                System.out.print(studentInfo.getScore().getMath() + ":" + grad);
-                System.out.println();
-                return;
-            }
-            String grad = basicEvaluation.getGrade(studentInfo.getScore().getMath());
-            System.out.print(studentInfo.getScore().getMath() + ":" + grad);
+            if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getMath())) return;
         }
-        System.out.println();
+    }
 
+    private boolean sujectCheckToEvaluationer(String subject, StudentInfo studentInfo, int score) {
+        Evaluatiner evaluatiner = new Evaluatiner();
+
+        if (studentInfo.getSubject().getSubject().equals(subject)) {
+            GradeEvaluation majorEvalution = new MajorEvalution();
+            evaluatiner.changeEvaluation(majorEvalution);
+            String grade = evaluatiner.getEvaluation().getGrade(score);
+            System.out.print(score + ":" + grade);
+            System.out.println();
+            return true;
+        }
+        GradeEvaluation basicEvaluation = new BasicEvaluation();
+        evaluatiner.changeEvaluation(basicEvaluation);
+        String grade = evaluatiner.getEvaluation().getGrade(score);
+        System.out.print(score + ":" + grade);
+        System.out.println();
+        return false;
     }
 
     public void getHeader(String subject) {
