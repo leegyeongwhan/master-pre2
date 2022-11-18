@@ -5,7 +5,6 @@ public class Subject {
 
     private String subject;
 
-
     public Subject(String string) {
         this.subject = string;
     }

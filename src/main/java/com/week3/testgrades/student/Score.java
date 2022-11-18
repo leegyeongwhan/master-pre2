@@ -7,7 +7,6 @@ import com.week3.testgrades.gradevaluation.GradeEvaluation;
 public class Score {
     private String[] score;
     private String[] grade;
-    private String string;
     GradeEvaluation gradeEvaluation = new BasicEvaluation();
 
     private void validationGrade() {
@@ -16,10 +15,6 @@ public class Score {
             String grade = gradeEvaluation.getGrade(Integer.parseInt(score[i]));
             this.grade[i] = grade;
         }
-    }
-
-    public String getString() {
-        return string;
     }
 
     public String[] getGrade() {
