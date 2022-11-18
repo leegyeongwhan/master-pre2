@@ -1,9 +1,6 @@
 package com.week3.testgrades.writer;
 
-import com.week3.testgrades.gradevaluation.BasicEvaluation;
-import com.week3.testgrades.gradevaluation.Evaluatiner;
-import com.week3.testgrades.gradevaluation.GradeEvaluation;
-import com.week3.testgrades.gradevaluation.MajorEvalution;
+import com.week3.testgrades.gradevaluation.*;
 import com.week3.testgrades.record.Record;
 import com.week3.testgrades.record.RecordService;
 import com.week3.testgrades.student.*;
@@ -16,7 +13,8 @@ import java.util.List;
 public class ReportWiterV2 implements Writer {
     private Record record = new Record();
     private List<StudentInfo> studentInfoList = new ArrayList<>();
-
+    private GradeEvaluation[] gradeEvaluation = {new BasicEvaluation(), new MajorEvalution(), new CheckEvalution()};
+    private StringBuilder sb = new StringBuilder();
 
     @Override
     public void writer() throws IOException {
@@ -88,14 +86,18 @@ public class ReportWiterV2 implements Writer {
     private void getScoreAndGrade(int idx, String subject) {
         StudentInfo studentInfo = studentInfoList.get(idx);
 
+
         if (subject.equals(String.valueOf(Data.국어))) {
             if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getKorean())) return;
         } else if (subject.equals(String.valueOf(Data.수학))) {
             if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getMath())) return;
+        } else if (subject.equals(String.valueOf(Data.방송댄스))) {
         }
     }
 
+
     private boolean sujectCheckToEvaluationer(String subject, StudentInfo studentInfo, int score) {
+
         Evaluatiner evaluatiner = new Evaluatiner();
 
         if (studentInfo.getSubject().getSubject().equals(subject)) {

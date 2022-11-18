@@ -38,6 +38,7 @@ public class StudentInfo {
         return score;
     }
 
+
     public void start() throws IOException {
         List<String> list = getList();
         inputRecord(list);

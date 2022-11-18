@@ -11,7 +11,6 @@ public class Evaluatiner {
 
     public void changeEvaluation(GradeEvaluation evaluation) {
         this.evaluation = evaluation;
-
     }
 
     public GradeEvaluation getEvaluation() {

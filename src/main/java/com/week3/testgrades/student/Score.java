@@ -8,14 +8,22 @@ public class Score {
     private String[] score;
     private int korean;
     private int math;
+    private int dance;
     private String[] grade;
 
-    public Score(int i, int i1, int i2) {
-
+    public Score(int korean, int math, int dance) {
+        this.korean = korean;
+        this.math = math;
+        this.dance = dance;
     }
 
-    public Score(int i, int i1) {
+    public Score(int korean, int math) {
+        this.korean = korean;
+        this.math = math;
+    }
 
+    public int getDance() {
+        return dance;
     }
 
     private void validationGrade(GradeEvaluation evaluation) {
