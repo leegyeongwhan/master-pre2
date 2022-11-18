@@ -61,13 +61,19 @@ public class ReportWiterV2 implements Writer {
 
     private void getScoreAndGrade(int idx, String subject) {
         StudentInfo studentInfo = studentInfoList.get(idx);
-
         if (subject.equals(String.valueOf(Data.국어))) {
             sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getKorean());
         } else if (subject.equals(String.valueOf(Data.수학))) {
             sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getMath());
         } else if (subject.equals(String.valueOf(Data.방송댄스))) {
+            sujectCheckToEvaluationerV2(studentInfo.getScore().getDance());
         }
+    }
+
+    private void sujectCheckToEvaluationerV2(int score) {
+        String grade = gradeEvaluation[2].getGrade(score);
+        System.out.print(score + ":" + grade);
+        System.out.println();
     }
 
     private void sujectCheckToEvaluationer(String subject, StudentInfo studentInfo, int score) {
