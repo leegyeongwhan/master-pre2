@@ -5,7 +5,6 @@ import com.week3.testgrades.record.Record;
 import com.week3.testgrades.record.RecordService;
 import com.week3.testgrades.student.*;
 
-import javax.security.auth.Subject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,33 +36,10 @@ public class ReportWiterV2 implements Writer {
         studentInfoList = studentInfo.getStudentList();
     }
 
-    /**
-     * enum형식으로 받기
-     *
-     * @return
-     */
     public List<String> findBySubjectDataRecordList() {
         List<String> subjectList = new ArrayList<>();
         for (Data data : Data.values()) {
             subjectList.add(String.valueOf(data));
-        }
-        return subjectList;
-    }
-
-    /**
-     * List 형식으로 받기
-     *
-     * @return
-     */
-    public List<String> findBySubjectRecordList() {
-        List<String> subjectList = new ArrayList<>();
-        for (int i = 0; i < studentInfoList.size(); i++) {
-            MajorSubject subject = studentInfoList.get(i).getSubject();
-            String str = subject.getSubject();
-            str = str.replaceAll("\\s", "");
-            if (!subjectList.contains(str)) {
-                subjectList.add(str);
-            }
         }
         return subjectList;
     }
@@ -86,34 +62,19 @@ public class ReportWiterV2 implements Writer {
     private void getScoreAndGrade(int idx, String subject) {
         StudentInfo studentInfo = studentInfoList.get(idx);
 
-
         if (subject.equals(String.valueOf(Data.국어))) {
-            if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getKorean())) return;
+            sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getKorean());
         } else if (subject.equals(String.valueOf(Data.수학))) {
-            if (sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getMath())) return;
+            sujectCheckToEvaluationer(subject, studentInfo, studentInfo.getScore().getMath());
         } else if (subject.equals(String.valueOf(Data.방송댄스))) {
         }
     }
 
-
-    private boolean sujectCheckToEvaluationer(String subject, StudentInfo studentInfo, int score) {
-
-        Evaluatiner evaluatiner = new Evaluatiner();
-
-        if (studentInfo.getSubject().getSubject().equals(subject)) {
-            GradeEvaluation majorEvalution = new MajorEvalution();
-            evaluatiner.changeEvaluation(majorEvalution);
-            String grade = evaluatiner.getEvaluation().getGrade(score);
-            System.out.print(score + ":" + grade);
-            System.out.println();
-            return true;
-        }
-        GradeEvaluation basicEvaluation = new BasicEvaluation();
-        evaluatiner.changeEvaluation(basicEvaluation);
-        String grade = evaluatiner.getEvaluation().getGrade(score);
+    private void sujectCheckToEvaluationer(String subject, StudentInfo studentInfo, int score) {
+        String studentSubject = studentInfo.getSubject().getSubject();
+        String grade = studentSubject.equals(subject) ? gradeEvaluation[1].getGrade(score) : gradeEvaluation[0].getGrade(score);
         System.out.print(score + ":" + grade);
         System.out.println();
-        return false;
     }
 
     public void getHeader(String subject) {

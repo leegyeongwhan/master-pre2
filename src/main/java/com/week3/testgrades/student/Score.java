@@ -1,7 +1,5 @@
 package com.week3.testgrades.student;
 
-
-import com.week3.testgrades.gradevaluation.BasicEvaluation;
 import com.week3.testgrades.gradevaluation.GradeEvaluation;
 
 public class Score {
