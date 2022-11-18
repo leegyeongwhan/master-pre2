@@ -10,6 +10,14 @@ public class Score {
     private int math;
     private String[] grade;
 
+    public Score(int i, int i1, int i2) {
+
+    }
+
+    public Score(int i, int i1) {
+
+    }
+
     private void validationGrade(GradeEvaluation evaluation) {
         grade = new String[score.length];
         for (int i = 0; i < score.length; i++) {

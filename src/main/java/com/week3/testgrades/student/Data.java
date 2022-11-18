@@ -1,5 +1,5 @@
 package com.week3.testgrades.student;
 
 public enum Data {
-    국어, 수학;
+    국어, 수학,방송댄스;
 }

@@ -6,22 +6,32 @@ import com.week3.testgrades.gradevaluation.GradeEvaluation;
 import com.week3.testgrades.gradevaluation.MajorEvalution;
 import com.week3.testgrades.record.Record;
 import com.week3.testgrades.record.RecordService;
-import com.week3.testgrades.student.Data;
-import com.week3.testgrades.student.MajorSubject;
-import com.week3.testgrades.student.StudentInfo;
+import com.week3.testgrades.student.*;
 
+import javax.security.auth.Subject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportWriter implements Writer {
+public class ReportWiterV2 implements Writer {
     private Record record = new Record();
-    private List<StudentInfo> studentInfoList;
+    private List<StudentInfo> studentInfoList = new ArrayList<>();
+
 
     @Override
     public void writer() throws IOException {
-        getStudentInfo();
+        studentInfoList.add(new StudentInfo(new Student("강감찬", "211213", "국어국문학과"),
+                new MajorSubject("국어"), new Score(95, 56, 95)));
+        studentInfoList.add(new StudentInfo(new Student("김유신", "212330", "컴퓨터공학과"),
+                new MajorSubject("수학"), new Score(95, 98, 85)));
+        studentInfoList.add(new StudentInfo(new Student("신사임당", "211213", "국어국문학과"),
+                new MajorSubject("국어"), new Score(100, 88, 55)));
+        studentInfoList.add(new StudentInfo(new Student("이순신", "202360", "국어국문학과"),
+                new MajorSubject("국어"), new Score(89, 95)));
+        studentInfoList.add(new StudentInfo(new Student("홍길동", "201290", "컴퓨터공학과"),
+                new MajorSubject("수학"), new Score(83, 56)));
         printResultInfo();
+
     }
 
     public void getStudentInfo() throws IOException {

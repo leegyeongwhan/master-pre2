@@ -14,11 +14,13 @@ public class StudentInfo {
     private Score score;
     private List<StudentInfo> list = new ArrayList<>();
 
-    private StudentInfo(Student student, MajorSubject subject, Score score) {
+    //private
+    public StudentInfo(Student student, MajorSubject subject, Score score) {
         this.student = student;
         this.subject = subject;
         this.score = score;
     }
+
 
     public StudentInfo() throws IOException {
         start();

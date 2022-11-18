@@ -14,6 +14,13 @@ public class Student {
         this.major = studentList[2];
     }
 
+    public Student(String name, String hakbun, String major) {
+        this.name = name;
+        //    HAK_BUN = hakbun++;
+        this.hakbun = hakbun;
+        this.major = major;
+    }
+
     public String getName() {
         return name;
     }
