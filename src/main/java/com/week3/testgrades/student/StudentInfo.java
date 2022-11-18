@@ -10,11 +10,11 @@ import java.util.List;
 
 public class StudentInfo {
     private Student student;
-    private Subject subject;
+    private MajorSubject subject;
     private Score score;
     private List<StudentInfo> list = new ArrayList<>();
 
-    private StudentInfo(Student student, Subject subject, Score score) {
+    private StudentInfo(Student student, MajorSubject subject, Score score) {
         this.student = student;
         this.subject = subject;
         this.score = score;
@@ -28,7 +28,7 @@ public class StudentInfo {
         return student;
     }
 
-    public Subject getSubject() {
+    public MajorSubject getSubject() {
         return subject;
     }
 
@@ -52,7 +52,7 @@ public class StudentInfo {
             String subjects = removeSplits[0];
             String[] scoreList = removeSplits(removeSplits, 0);
             Student student = new Student(studentList);
-            Subject subject = new Subject(subjects);
+            MajorSubject subject = new MajorSubject(subjects);
             Score score = new Score(scoreList);
             StudentInfo studentInfo = new StudentInfo(student, subject, score);
             this.list.add(studentInfo);

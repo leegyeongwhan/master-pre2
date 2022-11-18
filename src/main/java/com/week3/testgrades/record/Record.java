@@ -1,76 +1,48 @@
 package com.week3.testgrades.record;
 
-import com.week3.testgrades.student.Data;
-import com.week3.testgrades.student.StudentInfo;
-import com.week3.testgrades.student.Subject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Record {
-    private List<StudentInfo> studentInfoList;
 
-    public void getStudentInfo() throws IOException {
-        StudentInfo studentInfo = new StudentInfo();
-        studentInfoList = studentInfo.getStudentList();
-    }
-
-    public List<String> findBySubjectRecordList() {
-        List<String> subjectList = new ArrayList<>();
-        for (int i = 0; i < studentInfoList.size(); i++) {
-            Subject subject = studentInfoList.get(i).getSubject();
-            String str = subject.getSubject();
-            str = str.replaceAll("\\s", "");
-            if (!subjectList.contains(str)) {
-                subjectList.add(str);
-            }
-        }
-        return subjectList;
-    }
-
-    public void printResultInfo() {
-        List<String> recordList = findBySubjectRecordList();
-        for (int i = 0; i < recordList.size(); i++) {
-            getHeader(recordList.get(i));
-            for (int j = 0; j < studentInfoList.size(); j++) {
-                System.out.print(studentInfoList.get(j).getStudent().getName() + "  | " +
-                        studentInfoList.get(j).getStudent().getHakbun() + " | " +
-                        studentInfoList.get(j).getSubject().getSubject() + " | ");
-                getScoreAndGrade(j, recordList.get(i));
-                System.out.println("--------------------------------------");
-            }
-            System.out.println();
-        }
-    }
-
-    private void getScoreAndGrade(int idx, String subject) {
-        String[] grade = studentInfoList.get(idx).getScore().getGrade();
-        String[] score = studentInfoList.get(idx).getScore().getScore();
-        if (String.valueOf(Data.국어).equals(subject)) {
-            System.out.print(score[0] + ":" + grade[0]);
-        } else if (String.valueOf(Data.수학).equals(subject)) {
-            System.out.print(score[1] + ":" + grade[1]);
-        }
-        System.out.println();
-    }
-
-    public void getHeader(String subject) {
-        System.out.println(subject + " 과목 결과");
-        System.out.println("--------------------------------------");
-        System.out.println("    " + subject + " 수강생  학점");
-        System.out.println("이름   |   학번  |  중점과목   |   점수");
-        System.out.println("--------------------------------------");
-    }
-
-    public void printStudentList() {
-        for (int i = 0; i < studentInfoList.size(); i++) {
-            System.out.println(studentInfoList.get(i));
-        }
-    }
-
-    public RecordService recordService() {
-        return new RecordService();
-    }
-
+    //    public void print(Student student, Subject subject) {
+//        System.out.println(student.getName() + "학생은" + getSubjectCount(subject) + "을수강했습니다");
+//        System.out.println("총점은" + getSubjectAllSum(subject) + "이고 평균은" + getSubjectAvg(subject) + "입니다");
+//        System.out.println();
+//    }
+//
+//    private int getSubjectCount(Subject subject) {
+//        return subject.getSubjects().length - subjectcnt(subject.getSubjects());
+//    }
+//
+//    private int subjectcnt(String[] subjects) {
+//        int cnt = 0;
+//        for (int i = 0; i < subjects.length; i++) {
+//            if (Integer.parseInt(subjects[i]) == 0) {
+//                cnt++;
+//            }
+//        }
+//        return cnt;
+//    }
+//
+//    private String getSubjectAvg(Subject subject) {
+//        String[] subjects = subject.getSubjects();
+//        double avg = 0;
+//        int cnt = 0;
+//        for (int i = 0; i < subjects.length; i++) {
+//            avg += Integer.parseInt(subjects[i]);
+//            if (Integer.parseInt(subjects[i]) == 0) {
+//                cnt++;
+//                continue;
+//            }
+//        }
+//        avg /= subjects.length - cnt;
+//        return String.valueOf(avg);
+//    }
+//
+//    private String getSubjectAllSum(Subject subject) {
+//        String[] subjects = subject.getSubjects();
+//        double sum = 0;
+//        for (int i = 0; i < subjects.length; i++) {
+//            sum += Integer.parseInt(subjects[i]);
+//        }
+//        return String.valueOf(sum);
+//    }
 }

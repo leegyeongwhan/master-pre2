@@ -6,15 +6,24 @@ import com.week3.testgrades.gradevaluation.GradeEvaluation;
 
 public class Score {
     private String[] score;
+    private int korean;
+    private int math;
     private String[] grade;
-    GradeEvaluation gradeEvaluation = new BasicEvaluation();
 
-    private void validationGrade() {
+    private void validationGrade(GradeEvaluation evaluation) {
         grade = new String[score.length];
         for (int i = 0; i < score.length; i++) {
-            String grade = gradeEvaluation.getGrade(Integer.parseInt(score[i]));
+            String grade = evaluation.getGrade(Integer.parseInt(score[i]));
             this.grade[i] = grade;
         }
+    }
+
+    public int getKorean() {
+        return korean;
+    }
+
+    public int getMath() {
+        return math;
     }
 
     public String[] getGrade() {
@@ -22,8 +31,9 @@ public class Score {
     }
 
     public Score(String[] scoreList) {
+        this.korean = Integer.parseInt(scoreList[0]);
+        this.math = Integer.parseInt(scoreList[1]);
         this.score = scoreList;
-        validationGrade();
     }
 
     public String[] getScore() {

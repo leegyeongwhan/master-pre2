@@ -1,11 +1,11 @@
 package com.week3.testgrades.student;
 
 
-public class Subject {
+public class MajorSubject {
 
     private String subject;
 
-    public Subject(String string) {
+    public MajorSubject(String string) {
         this.subject = string;
     }
 
