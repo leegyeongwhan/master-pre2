@@ -1,8 +1,9 @@
 package com.week4.mission1.shopping.membership;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class MemberShip {
+public class MemberShip implements Comparable<MemberShip> {
     private int id;
     private String name;
     private GRADE grade;
@@ -44,5 +45,21 @@ public class MemberShip {
 
     public GRADE getGrade() {
         return grade;
+    }
+
+//    @Override
+//    public int compare(MemberShip o1, MemberShip o2) {
+//        return o1.id - o2.id;
+//    }
+
+//    @Override
+//    public int compare(MemberShip o1, MemberShip o2) {
+//        return o2.getName().compareTo(o1.getName());
+//    }
+
+
+    @Override
+    public int compareTo(MemberShip o) {
+        return (o.name.compareTo(this.name)) * -1;
     }
 }
