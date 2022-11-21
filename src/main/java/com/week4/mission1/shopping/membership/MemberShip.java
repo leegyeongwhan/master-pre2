@@ -52,14 +52,14 @@ public class MemberShip implements Comparable<MemberShip> {
 //        return o1.id - o2.id;
 //    }
 
-//    @Override
-//    public int compare(MemberShip o1, MemberShip o2) {
-//        return o2.getName().compareTo(o1.getName());
-//    }
-
-
     @Override
     public int compareTo(MemberShip o) {
-        return (o.name.compareTo(this.name)) * -1;
+        return this.id - o.id;
     }
+
+
+//    @Override
+//    public int compareTo(MemberShip o) {
+//        return (o.name.compareTo(this.name)) * -1;
+//    }
 }

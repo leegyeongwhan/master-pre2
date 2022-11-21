@@ -1,18 +1,16 @@
-package com.week4.mission1.shopping;
+package com.week4.mission1._2;
 
 import com.week4.mission1.shopping.membership.GRADE;
 import com.week4.mission1.shopping.membership.MemberShip;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.*;
 
-public class MemberShipMangementTreeSet {
+public class MemberShipMangementSet {
 
-    private TreeSet<MemberShip> memberShips;
+    private Set<MemberShip> memberShips;
 
-    public MemberShipMangementTreeSet() {
-        this.memberShips = new TreeSet<>();
+    public MemberShipMangementSet() {
+        this.memberShips = new HashSet<>();
     }
 
     public void addMemberShip(int id, String name, GRADE grade) {
@@ -26,8 +24,9 @@ public class MemberShipMangementTreeSet {
 
     public void showAllMember() {
         System.out.println("=========================");
-        for (MemberShip memberShip : memberShips) {
-            System.out.println(memberShip);
+        Iterator iterator = memberShips.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
         System.out.println("=========================");
     }
@@ -43,5 +42,3 @@ public class MemberShipMangementTreeSet {
         return false;
     }
 }
-
-

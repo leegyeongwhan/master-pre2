@@ -1,11 +1,12 @@
-package com.week4.mission1.shopping;
+package com.week4.mission1._1;
 
 import com.week4.mission1.shopping.membership.GRADE;
 
-public class MemberShipManagementMapTest {
+public class MemberShipManagementListTest {
+
     public static void main(String[] args) {
 
-        MemberShipMangementMap management = new MemberShipMangementMap();
+        MemberShipMangementList management = new MemberShipMangementList();
         management.addMemberShip(1001, "Hong", GRADE.SILVER);
         management.addMemberShip(1002, "Park", GRADE.VIP);
         management.addMemberShip(1003, "Kim", GRADE.PLATINUM);
@@ -22,13 +23,5 @@ public class MemberShipManagementMapTest {
         if (management.removeMember(1005)) {
             management.showAllMember();
         }
-
-        System.out.println("이미 존재 하는 아이드를 추가하려 할때 :");
-        management.addMemberShip(1002, "Lee", GRADE.VIP);
-
-        management.showAllMember();
-
-        management.addMemberShip(1003, "Song", GRADE.PLATINUM);
-        management.showAllMember();
     }
 }

@@ -1,6 +1,11 @@
-package com.week4.mission1.shopping;
+package com.week4.mission1._4;
 
 import com.week4.mission1.shopping.membership.GRADE;
+import com.week4.mission1.shopping.membership.MemberShip;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class MemberShipManagementTreeSetTest {
     public static void main(String[] args) {
@@ -28,8 +33,8 @@ public class MemberShipManagementTreeSetTest {
 //        System.out.println("이미 존재 하는 아이디를 추가하려 할때:");
 //        management.addMemberShip(1002, "Lee", GRADE.VIP);
         // 이름으로 비교하는 경우
-         System.out.println("이미 존재 하는 이름을 추가하려 할때:");
-         management.addMemberShip(1002, "Kim", GRADE.VIP);
+        System.out.println("이미 존재 하는 이름을 추가하려 할때:");
+        management.addMemberShip(1002, "Kim", GRADE.VIP);
         management.showAllMember();
     }
 

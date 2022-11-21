@@ -1,16 +1,18 @@
-package com.week4.mission1.shopping;
+package com.week4.mission1._4;
 
 import com.week4.mission1.shopping.membership.GRADE;
 import com.week4.mission1.shopping.membership.MemberShip;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
 
-public class MemberShipMangementSet {
+public class MemberShipMangementTreeSet {
 
-    private Set<MemberShip> memberShips;
+    private TreeSet<MemberShip> memberShips;
 
-    public MemberShipMangementSet() {
-        this.memberShips = new HashSet<>();
+    public MemberShipMangementTreeSet() {
+        this.memberShips = new TreeSet<>();
     }
 
     public void addMemberShip(int id, String name, GRADE grade) {
@@ -24,9 +26,8 @@ public class MemberShipMangementSet {
 
     public void showAllMember() {
         System.out.println("=========================");
-        Iterator iterator = memberShips.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        for (MemberShip memberShip : memberShips) {
+            System.out.println(memberShip);
         }
         System.out.println("=========================");
     }
@@ -41,4 +42,10 @@ public class MemberShipMangementSet {
         System.out.println(index + "에 해당하는 맴버가 없습니다");
         return false;
     }
+
+    public TreeSet<MemberShip> getMemberShips() {
+        return memberShips;
+    }
 }
+
+

@@ -1,4 +1,4 @@
-package com.week4.mission1.shopping;
+package com.week4.mission1._3;
 
 import com.week4.mission1.shopping.membership.GRADE;
 import com.week4.mission1.shopping.membership.MemberShip;
