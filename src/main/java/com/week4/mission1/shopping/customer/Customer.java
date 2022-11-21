@@ -1,6 +1,6 @@
 package com.week4.mission1.shopping.customer;
 
-import com.week4.mission1.shopping.membership.GRADE;
+import com.week4.mission1.membership.GRADE;
 
 public abstract class Customer {
     protected static Long id = 0L;

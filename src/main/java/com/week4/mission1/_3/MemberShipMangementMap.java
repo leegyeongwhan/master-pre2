@@ -1,7 +1,7 @@
 package com.week4.mission1._3;
 
-import com.week4.mission1.shopping.membership.GRADE;
-import com.week4.mission1.shopping.membership.MemberShip;
+import com.week4.mission1.membership.GRADE;
+import com.week4.mission1.membership.MemberShip;
 
 import java.util.*;
 

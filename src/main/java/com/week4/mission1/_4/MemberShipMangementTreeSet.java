@@ -1,10 +1,8 @@
 package com.week4.mission1._4;
 
-import com.week4.mission1.shopping.membership.GRADE;
-import com.week4.mission1.shopping.membership.MemberShip;
+import com.week4.mission1.membership.GRADE;
+import com.week4.mission1.membership.MemberShip;
 
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.TreeSet;
 
 public class MemberShipMangementTreeSet {

@@ -1,11 +1,6 @@
 package com.week4.mission1._4;
 
-import com.week4.mission1.shopping.membership.GRADE;
-import com.week4.mission1.shopping.membership.MemberShip;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.TreeSet;
+import com.week4.mission1.membership.GRADE;
 
 public class MemberShipManagementTreeSetTest {
     public static void main(String[] args) {

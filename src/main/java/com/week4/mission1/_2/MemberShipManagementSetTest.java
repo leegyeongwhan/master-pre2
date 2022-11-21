@@ -1,6 +1,6 @@
 package com.week4.mission1._2;
 
-import com.week4.mission1.shopping.membership.GRADE;
+import com.week4.mission1.membership.GRADE;
 
 public class MemberShipManagementSetTest {
     public static void main(String[] args) {

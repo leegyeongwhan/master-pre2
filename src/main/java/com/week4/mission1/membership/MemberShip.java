@@ -1,6 +1,5 @@
-package com.week4.mission1.shopping.membership;
+package com.week4.mission1.membership;
 
-import java.util.Comparator;
 import java.util.Objects;
 
 public class MemberShip implements Comparable<MemberShip> {
