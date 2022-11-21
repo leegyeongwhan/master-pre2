@@ -10,9 +10,9 @@ import javax.security.auth.Subject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class FileWriter implements Writer {
-
 
     @Override
     public void writer() {
