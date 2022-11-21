@@ -1,6 +1,6 @@
 package com.week4.mission1.shopping.membership;
 
-import com.week4.mission1.shopping.MemberShipMangementList;
+import java.util.Objects;
 
 public class MemberShip {
     private int id;
@@ -11,6 +11,20 @@ public class MemberShip {
         this.id = id;
         this.name = name;
         this.grade = grade;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof MemberShip)) {
+            return false;
+        }
+        MemberShip m = (MemberShip) obj;
+        return this.id == m.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override

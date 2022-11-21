@@ -1,6 +1,7 @@
-package com.week4.mission1.shopping.membership;
+package com.week4.mission1.shopping;
 
 import com.week4.mission1.shopping.MemberShipMangementList;
+import com.week4.mission1.shopping.membership.GRADE;
 
 public class MemberShipManagementListTest {
 
