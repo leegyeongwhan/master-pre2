@@ -20,6 +20,17 @@ public final class MemberShipMangementList {
         for (MemberShip memberShip : memberShips) {
             System.out.println(memberShip.toString());
         }
+        System.out.println("=========================");
     }
 
+    public boolean removeMember(int index) {
+        for (MemberShip memberShip : memberShips) {
+            if (memberShip.getId() == index) {
+                memberShips.remove(memberShip);
+                return true;
+            }
+        }
+        System.out.println(index + "에 해당하는 맴버가 없습니다");
+        return false;
+    }
 }
