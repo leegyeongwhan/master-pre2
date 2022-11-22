@@ -14,7 +14,7 @@ public class Main {
 
         int n, data;
         n = heap.getHeapSize();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i < n; i++) {
             data = heap.deleteHeap();
             System.out.printf("\n 출력 : [%d]", data);
         }
