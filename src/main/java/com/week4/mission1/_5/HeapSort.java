@@ -3,7 +3,7 @@ package com.week4.mission1._5;
 import java.util.ArrayList;
 
 public class HeapSort implements Heap {
-    private Heap heap = new MinHeap();
+    private Heap heap = new MaxHeap();
 
     @Override
     public void insertHeap(int num) {
