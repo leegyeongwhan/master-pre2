@@ -29,6 +29,7 @@ public class MinHeap implements Heap {
 
     @Override
     public void printHeap() {
+        heap.remove(0);
         System.out.println("Min heap= " + heap.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(" ")));

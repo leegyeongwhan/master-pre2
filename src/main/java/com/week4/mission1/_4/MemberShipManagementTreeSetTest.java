@@ -1,12 +1,15 @@
 package com.week4.mission1._4;
 
 import com.week4.mission1.membership.GRADE;
+import com.week4.mission1.membership.MemberShip;
+
+import java.util.Comparator;
 
 public class MemberShipManagementTreeSetTest {
     public static void main(String[] args) {
 
 
-        MemberShipMangementTreeSet management = new MemberShipMangementTreeSet();
+        MemberShipMangementTreeSet management = new MemberShipMangementTreeSet(new ascendingComparaotr());
         management.addMemberShip(1003, "Hong", GRADE.SILVER);
         management.addMemberShip(1001, "Park", GRADE.VIP);
         management.addMemberShip(1002, "Kim", GRADE.PLATINUM);
@@ -33,4 +36,12 @@ public class MemberShipManagementTreeSetTest {
         management.showAllMember();
     }
 
+}
+
+class ascendingComparaotr implements Comparator<MemberShip> {
+
+    @Override
+    public int compare(MemberShip o1, MemberShip o2) {
+        return (o1.getName().compareTo(o2.getName())) * -1;
+    }
 }

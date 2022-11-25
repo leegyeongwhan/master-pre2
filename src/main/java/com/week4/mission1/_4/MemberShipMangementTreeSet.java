@@ -3,14 +3,16 @@ package com.week4.mission1._4;
 import com.week4.mission1.membership.GRADE;
 import com.week4.mission1.membership.MemberShip;
 
+import java.util.Comparator;
 import java.util.TreeSet;
 
 public class MemberShipMangementTreeSet {
 
     private TreeSet<MemberShip> memberShips;
 
-    public MemberShipMangementTreeSet() {
-        this.memberShips = new TreeSet<>();
+    public MemberShipMangementTreeSet(ascendingComparaotr ascendingComparaotr) {
+
+        this.memberShips = new TreeSet<>(ascendingComparaotr);
     }
 
     public void addMemberShip(int id, String name, GRADE grade) {
