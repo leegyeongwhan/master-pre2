@@ -1,4 +1,4 @@
-package com.week4.mission2.client;
+package com.week4.mission2.server;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
