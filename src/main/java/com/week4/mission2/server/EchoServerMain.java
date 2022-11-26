@@ -15,6 +15,7 @@ public class EchoServerMain {
         while (true) {
             // 소켓 서버 접속시 소켓에 접속자 할당.
             Socket socket = serverSocket.accept();
+
             System.out.println (new Date().toString() + ":" + socket.toString());
             System.out.println (socket.getLocalPort());
             System.out.println (socket.getPort());

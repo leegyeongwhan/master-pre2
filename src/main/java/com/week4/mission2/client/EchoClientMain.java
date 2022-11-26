@@ -4,9 +4,12 @@ import java.io.*;
 import java.net.Socket;
 
 public class EchoClientMain {
+    private static final String SERVER_IP = "127.0.0.1";
+    private static final int SERVER_PORT = 5000;
+
     public static void main(String args[]) throws IOException {
 
-        Socket socket = new Socket("127.0.0.1", 50000);
+        Socket socket = new Socket(SERVER_IP, SERVER_PORT);
         BufferedWriter bw;
         BufferedReader br;
         bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
