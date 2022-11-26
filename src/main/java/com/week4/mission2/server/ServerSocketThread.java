@@ -34,7 +34,7 @@ public class ServerSocketThread extends Thread {
             // true : autoFlush 설정
             pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
 
-            sendMessage("대화자 이름을 넣으세요");
+            sendMessage("이름을 넣으세요");
             name = br.readLine();
             server.broadCasting("[" + name + "]님이 입장하셨습니다.");
 

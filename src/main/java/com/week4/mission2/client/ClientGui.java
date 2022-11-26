@@ -19,15 +19,15 @@ import javax.swing.JTextField;
 
 
 public class ClientGui extends JFrame implements ActionListener, Runnable {
-    // 클라이언트 화면용
+
     private Container container = getContentPane();
     private JTextArea textArea = new JTextArea();
     private JScrollPane scrollPane = new JScrollPane(textArea);
     private JTextField textField = new JTextField();
-    // 통신용
+
     private Socket socket;
-    private PrintWriter out;
-    private BufferedReader in;
+    private PrintWriter pw;
+    private BufferedReader br;
     private String str;        // 채팅 문자열 저장
 
     public ClientGui(String ip, int port) {
@@ -41,24 +41,20 @@ public class ClientGui extends JFrame implements ActionListener, Runnable {
         initNet(ip, port);
     }
 
-    // 통신 초기화
+    //포트와, ip를 체크 후  접속체크
     private void initNet(String ip, int port) {
         try {
-            // 서버에 접속 시도
-            socket = new Socket(ip, port);
-            // 통신용 input, output 클래스 설정
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            this.socket = new Socket(ip, port);
+            br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             // ture : auto flush 설정
-            out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
+            pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
         } catch (UnknownHostException e) {
             System.out.println("IP 주소가 다릅니다.");
-            //e.printStackTrace();
         } catch (IOException e) {
             System.out.println("접속 실패");
-            //e.printStackTrace();
         }
-        // 쓰레드 구동
-        Thread thread = new Thread(this); // run 함수 -> this
+
+        Thread thread = new Thread(this);
         thread.start();
     }
 
@@ -74,12 +70,11 @@ public class ClientGui extends JFrame implements ActionListener, Runnable {
     }
 
     // 응답 대기
-    // -> 서버로부터 응답으로 전달된 문자열을 읽어서, textArea에 출력하기
     @Override
     public void run() {
         while (true) {
             try {
-                str = in.readLine();
+                str = br.readLine();
                 textArea.append(str + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -89,10 +84,8 @@ public class ClientGui extends JFrame implements ActionListener, Runnable {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // textField의 문자열을 읽어와서 서버로 전송함
         str = textField.getText();
-        out.println(str);
-        // textField 초기화
+        pw.println(str);
         textField.setText("");
     }
 }

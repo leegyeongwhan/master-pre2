@@ -9,21 +9,21 @@ import java.util.List;
 public class ChatServer {
     private ServerSocket serverSocket;
     private Socket socket;
-    private List<Thread> list;        // ServerSocketThread 객체 저장
+    private List<Thread> list;
 
     public ChatServer() {
-        list = new ArrayList<>();
+        this.list = new ArrayList<>();
         System.out.println("서버가 시작되었습니다.");
     }
 
     public void chatServerRunner() {
         try {
-            this.serverSocket = new ServerSocket(5000);        // 소켓 접속 대기
-            this.serverSocket.setReuseAddress(true);        // ServerSocket이 port를 바로 다시 사용한다 설정(port를 잡고있음)
+            this.serverSocket = new ServerSocket(5000);
+            this.serverSocket.setReuseAddress(true);
 
             while (true) {
-                this.socket = serverSocket.accept();            // accept -> 1. 소켓 접속 대기 2. 소켓 접속 허락
-                ServerSocketThread thread = new ServerSocketThread(this, this.socket);    // this -> ChatServer 자신
+                this.socket = serverSocket.accept(); //서버가 종료 전까지 게속돌면서 클라이언트를 추가 할시 쓰레드 추가
+                ServerSocketThread thread = new ServerSocketThread(this, this.socket);
                 addClient(thread);        // 리스트에 쓰레드 객체 저장
                 thread.start();
             }
