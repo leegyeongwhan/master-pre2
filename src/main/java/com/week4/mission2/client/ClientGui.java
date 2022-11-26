@@ -18,30 +18,29 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-public class ClientGui extends JFrame implements ActionListener, Runnable{
+public class ClientGui extends JFrame implements ActionListener, Runnable {
     // 클라이언트 화면용
-    Container container = getContentPane();
-    JTextArea textArea = new JTextArea();
-    JScrollPane scrollPane = new JScrollPane(textArea);
-    JTextField textField = new JTextField();
+    private Container container = getContentPane();
+    private JTextArea textArea = new JTextArea();
+    private JScrollPane scrollPane = new JScrollPane(textArea);
+    private JTextField textField = new JTextField();
     // 통신용
-    Socket socket;
-    PrintWriter out;
-    BufferedReader in;
-    String str; 		// 채팅 문자열 저장
+    private Socket socket;
+    private PrintWriter out;
+    private BufferedReader in;
+    private String str;        // 채팅 문자열 저장
 
     public ClientGui(String ip, int port) {
-        // frame 기본 설정
-        setTitle("챗팅");
-        setSize(550, 400);
+
+        setTitle("채팅 프로그램");
+        setSize(400, 400);
         setLocation(400, 400);
         init();
         start();
         setVisible(true);
-        // 통신 초기화
         initNet(ip, port);
-        System.out.println("ip = " + ip);
     }
+
     // 통신 초기화
     private void initNet(String ip, int port) {
         try {
@@ -62,20 +61,23 @@ public class ClientGui extends JFrame implements ActionListener, Runnable{
         Thread thread = new Thread(this); // run 함수 -> this
         thread.start();
     }
+
     private void init() {
         container.setLayout(new BorderLayout());
         container.add("Center", scrollPane);
         container.add("South", textField);
     }
+
     private void start() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         textField.addActionListener(this);
     }
+
     // 응답 대기
     // -> 서버로부터 응답으로 전달된 문자열을 읽어서, textArea에 출력하기
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             try {
                 str = in.readLine();
                 textArea.append(str + "\n");
@@ -84,6 +86,7 @@ public class ClientGui extends JFrame implements ActionListener, Runnable{
             }
         }
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // textField의 문자열을 읽어와서 서버로 전송함

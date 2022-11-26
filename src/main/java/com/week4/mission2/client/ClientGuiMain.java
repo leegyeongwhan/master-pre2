@@ -9,7 +9,7 @@ public class ClientGuiMain {
             InetAddress ia = InetAddress.getLocalHost();
             String ip_str = ia.toString();
             String ip = ip_str.substring(ip_str.indexOf("/") + 1);
-            new ClientGui(ip, 5420);
+            new ClientGui(ip, 5000);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
